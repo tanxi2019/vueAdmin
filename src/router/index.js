@@ -4,9 +4,9 @@ import Customers from '@/components/Customers'
 import add from '@/components/add'
 import feedback from '@/components/feedback'
 import about from '@/components/about'
-import CustomerDetails from  '@/components/CustomerDetails'
+import CustomerDetails from '@/components/CustomerDetails'
 import Edit from '@/components/Edit'
-import login from  '@/components/login'
+import login from '@/components/login'
 Vue.use(Router)
 
 export default new Router({
@@ -16,7 +16,7 @@ export default new Router({
     {
       path: '/',
       name: 'Customers',
-      component:Customers
+      component: Customers
     },
     {
       path: '/add',
@@ -33,17 +33,17 @@ export default new Router({
       name: 'feedback',
       component: feedback
     },
-    { path:'/customerDetails/:id',
+    { path: '/customerDetails/:id',
       name: 'customerDetails',
-      component:CustomerDetails
+      component: CustomerDetails
     },
-    { path:'/edit/:id',
-      name:'edit',
-      component:Edit
+    { path: '/edit/:id',
+      name: 'edit',
+      component: Edit
     },
-    { path:'/login',
-      name:'login',
-      component:login
+    { path: '/login',
+      name: 'login',
+      component: login
     }
   ]
 })

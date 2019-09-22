@@ -30,44 +30,42 @@
 </template>
 
 <script>
-  // eslint-disable-next-line
-  /* eslint-disable */
-  import page from '@/components/page'
-  import Alert from './Alert'
-  export default {
-    name: 'customers',
-    components:{Alert,page},
-    data:function () {
-      return {
-        customers:[],
-        alert:"",
-        filterInput:""
-      }
-    },
-    methods:{
-      fetchCustomers: function () {
-        this.$axios.get('/users')
-          .then((response) => {
-            //console.log(response);
-            this.customers = response.data
-          })
-      },
-      filterBy(customers,value){
-        return customers.filter((item) =>{
-          return item.name.match(value);
-        })
-      }
-    },
-    created(){
-      if (this.$route.query.alert) {
-        this.alert = this.$route.query.alert;
-      }
-      this.fetchCustomers();
-    },
-    updated(){
-      this.fetchCustomers();
+import {getUser} from '../../api/api'
+import page from '@/components/page'
+import Alert from './Alert'
+export default {
+  name: 'customers',
+  components: {Alert, page},
+  data: function () {
+    return {
+      customers: [],
+      alert: '',
+      filterInput: ''
     }
+  },
+  methods: {
+    fetchCustomers: function () {
+      // console.log(getUser()) // 测试
+      getUser().then((res) => {
+        this.customers = res.data
+      })
+    },
+    filterBy (customers, value) {
+      return customers.filter((item) => {
+        return item.name.match(value)
+      })
+    }
+  },
+  created () {
+    if (this.$route.query.alert) {
+      this.alert = this.$route.query.alert
+    }
+    this.fetchCustomers()
+  },
+  updated () {
+    this.fetchCustomers()
   }
+}
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>

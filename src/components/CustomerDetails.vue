@@ -1,15 +1,10 @@
 <template>
   <div class="details container">
-	  <span class="pull-left">
-		  <router-link to="/" class="btn btn-default">返回</router-link>
-	  </span>
-    <div class="page-header">
-    	{{customer.name}}
-    	<span class="pull-right">
-    		<router-link class="btn btn-primary" v-bind:to="'/edit/'+customer.id">
-    			编辑
-    		</router-link>
-    		<button class="btn btn-danger" v-on:click="deleteCustomer(customer.id)">删除</button>
+     <span class="pull-left">
+       <router-link to="/" class="btn btn-default">返回</router-link></span>
+    <div class="page-header">{{customer.name}}<span class="pull-right">
+      <router-link class="btn btn-primary" :to="'/edit/'+customer.id">编辑</router-link>
+    	<button class="btn btn-danger" v-on:click="deleteCustomer(customer.id)">删除</button>
     	</span>
     </div>
     <ul class="list-group">
@@ -51,31 +46,38 @@
 </template>
 
 <script>
+import {getUserId} from '../../api/api'
+
 export default {
   name: 'cumstomerdetails',
   data () {
     return {
-      customer:""
+      customer:[]
     }
   },
-  methods:{
-  	fetchCustomers(id){
-      this.$axios.get("/users/"+id)
-          .then((response) => {
-            //console.log(response);
-            this.customer = response.data;
-          })
+  methods: {
+  	 fetchCustomers: function (id) {
+       // this.$axios.get("/users/"+id)
+       //   .then((response) => {
+       //     this.customer = response.data
+       //     console.log(id)
+       //     console.log(this.customer)
+       //   })
+       getUserId().then((res) => {
+           this.customer = res.data
+         })
+       console.log(getUserId())
+       console.log(id)
+       console.log(this.customer)
     },
-    deleteCustomer(id){
-    	// console.log(id);
-    	this.$axios.delete("/users/"+id)
-    		.then((response) => {
-    			this.$router.push({path:"/",query:{alert:"用户删除成功!"}});
-    		})
+    deleteCustomer: function (id) {
+  	   this.$axios.delete('/users/' + id)
+         .then((response) => {
+           this.$router.push({path: '/', query: {alert: '用户删除成功!'}})
+    })
     }
   },
-  created(){
-  	this.fetchCustomers(this.$route.params.id);
+  created () { this.fetchCustomers(this.$route.params.id)
   }
 }
 </script>

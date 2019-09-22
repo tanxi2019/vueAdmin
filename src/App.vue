@@ -24,13 +24,10 @@
 </template>
 
 <script>
-  import $ from 'jquery'
-  export default {
-    name: 'App',
-    mounted: function () {
-      console.log($)
-    }
-  }
+
+export default {
+  name: 'App'
+}
 </script>
 
 <style>
