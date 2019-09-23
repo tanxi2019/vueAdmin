@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import {getUserId} from '../../api/api'
+import {getUserId} from '../api/api'
 
 export default {
   name: 'cumstomerdetails',
@@ -57,18 +57,13 @@ export default {
   },
   methods: {
   	 fetchCustomers: function (id) {
-       // this.$axios.get("/users/"+id)
-       //   .then((response) => {
-       //     this.customer = response.data
-       //     console.log(id)
-       //     console.log(this.customer)
-       //   })
-       getUserId().then((res) => {
-           this.customer = res.data
+  	   let params = {id:id} //传参
+       getUserId(params).then((res) => {
+          this.$data.customer = res.data
+           console.log(getUserId()) // 有数据
+           console.log(this.$data.customer) // 有数据
+           console.log(params) // id有效
          })
-       console.log(getUserId())
-       console.log(id)
-       console.log(this.customer)
     },
     deleteCustomer: function (id) {
   	   this.$axios.delete('/users/' + id)
@@ -77,7 +72,8 @@ export default {
     })
     }
   },
-  created () { this.fetchCustomers(this.$route.params.id)
+  created () {
+    this.fetchCustomers(this.$route.params.id)
   }
 }
 </script>

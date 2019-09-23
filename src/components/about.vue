@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import {getUser} from '../../api/api'
+import {getUser} from '../api/api'
 import page from '@/components/page'
 import Alert from './Alert'
 export default {
