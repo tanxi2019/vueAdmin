@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import {getUserId} from '../api/api'
 import Alert from './Alert'
 export default {
   name: 'add',
@@ -52,16 +53,15 @@ export default {
   },
   methods:{
     fetchCustomer(id){
-        this.$axios.get("/users/"+id)
-            .then((response) => {
-              console.log(response);
-              this.customer = response.data;
-            })
+      let params = {id:id} // 传参
+      getUserId(params).then((res) => {
+        this.customer = res.data
+        this.customer.forEach(item =>{ this.customer = item }) // forEach遍历customer对象
+      })
     },
   	updateCustomer(e){
-  		// console.log(123);
   		if (!this.customer.name || !this.customer.phone || !this.customer.email) {
-        console.log("请添加对应的信息!");
+        //console.log("请添加对应的信息!");
   			this.alert = "请添加对应的信息!";
   		}else{
   			let updateCustomer = {
@@ -75,7 +75,6 @@ export default {
   			};
   			this.$axios.put("/users/"+this.$route.params.id,updateCustomer)
   				.then((response) => {
-  					 console.log(response);
   					this.$router.push({path:"/",query:{alert:"用户信息更新成功!"}});
   				});
   			e.preventDefault();

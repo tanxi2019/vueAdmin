@@ -52,17 +52,15 @@ export default {
   name: 'cumstomerdetails',
   data () {
     return {
-      customer:[]
+      customer:{}
     }
   },
   methods: {
   	 fetchCustomers: function (id) {
-  	   let params = {id:id} //传参
+  	   let params = {id:id} // 传参
        getUserId(params).then((res) => {
-          this.$data.customer = res.data
-           console.log(getUserId()) // 有数据
-           console.log(this.$data.customer) // 有数据
-           console.log(params) // id有效
+          this.customer = res.data
+          this.customer.forEach(item =>{ this.customer = item }) // forEach遍历customer对象
          })
     },
     deleteCustomer: function (id) {

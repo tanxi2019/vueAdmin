@@ -52,7 +52,6 @@
     },
     methods:{
       addCustomer(e){
-        console.log(123);
         if (!this.customer.name || !this.customer.phone || !this.customer.email) {
           //console.log("请添加对应的信息!");
           this.alert = "请添加对应的信息!";

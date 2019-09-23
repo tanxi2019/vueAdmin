@@ -31,12 +31,6 @@
       "id": 4
     },
     {
-      "name": "asdfasfd",
-      "phone": "asfasf",
-      "email": "asdfasfd",
-      "id": 5
-    },
-    {
       "name": "home",
       "phone": "1144455665656",
       "email": "1555556666",
@@ -47,7 +41,7 @@
       "id": 6
     },
     {
-      "name": "谭熙",
+      "name": "谭熙4444",
       "phone": "17683957578",
       "email": "1832355298@qq.com",
       "education": "大专",
@@ -55,6 +49,12 @@
       "profession": "****************",
       "profile": "************",
       "id": 7
+    },
+    {
+      "name": "急急急",
+      "phone": "急急急",
+      "email": "就 ",
+      "id": 8
     }
   ],
   "companies": [
