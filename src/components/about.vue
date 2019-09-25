@@ -45,12 +45,12 @@ export default {
   },
   methods: {
     fetchCustomers: function () {
-      //console.log(getUser()) // 测试
+      // console.log(getUser()) // 测试
       getUser().then((res) => {
-        this.customers = res.data
+        this.customers = res.data // 赋值
       })
     },
-    filterBy (customers, value) {
+    filterBy (customers, value) { // 过滤
       return customers.filter((item) => {
         return item.name.match(value)
       })

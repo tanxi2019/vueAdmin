@@ -41,43 +41,48 @@
 </template>
 
 <script>
-  import Alert from './Alert'
-  export default {
-    name: 'add',
-    data () {
-      return {
-        customer:{},
-        alert:""
-      }
-    },
-    methods:{
-      addCustomer(e){
-        if (!this.customer.name || !this.customer.phone || !this.customer.email) {
-          //console.log("请添加对应的信息!");
-          this.alert = "请添加对应的信息!";
-        }else{
-          let newCustomer = {
-            name:this.customer.name,
-            phone:this.customer.phone,
-            email:this.customer.email,
-            education:this.customer.education,
-            graduationschool:this.customer.graduationschool,
-            profession:this.customer.profession,
-            profile:this.customer.profile
-          };
-
-          this.$axios.post("/users",newCustomer)
-            .then((response) => {
-             // console.log(response);
-              this.$router.push({path:"/",query:{alert:"用户信息添加成功!"}});
-            });
-          e.preventDefault();
+import {getUserAdd} from '../api/api'
+import Alert from './Alert'
+export default {
+  name: 'add',
+  data () {
+    return {
+      customer: {},
+      alert: ''
+    }
+  },
+  methods: {
+    addCustomer (e) {
+      if (!this.customer.name || !this.customer.phone || !this.customer.email) {
+        this.alert = '请添加对应的信息!'
+      } else {
+        let params = {
+          name: this.customer.name,
+          phone: this.customer.phone,
+          email: this.customer.email,
+          education: this.customer.education,
+          graduationschool: this.customer.graduationschool,
+          profession: this.customer.profession,
+          profile: this.customer.profile
         }
-        e.preventDefault();
+        // 封装后调用
+        getUserAdd(params) // post 提交
+        this.$router.push({path: '/', query: {alert: '用户信息添加成功!'}})
+
+        // 未封装调用
+        // this.$axios.post('/users', newCustomer)
+        //   .then((response) => {
+        //     // console.log(response);
+        //     this.$router.push({path: '/', query: {alert: '用户信息添加成功!'}})
+        //   })
+
+        e.preventDefault()
       }
-    },
-    components:{Alert}
-  }
+      e.preventDefault()
+    }
+  },
+  components: {Alert}
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

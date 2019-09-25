@@ -9,12 +9,11 @@
   {{message}}
 </div>
 </template>
-// eslint-disable-next-line
- /* eslint-disable */
+
 <script>
 export default {
   name: 'alert',
-  props: ["message"],
+  props: ['message'],
   data () {
     return {
 
