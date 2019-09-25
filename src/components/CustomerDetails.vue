@@ -46,8 +46,7 @@
 </template>
 
 <script>
-import {getUserId} from '../api/api'
-
+import {getUserId,getUserDelete} from '../api/api'
 export default {
   name: 'cumstomerdetails',
   data () {
@@ -64,9 +63,14 @@ export default {
          })
     },
     deleteCustomer: function (id) {
-  	   this.$axios.delete('/users/' + id)
-         .then((response) => {
-           this.$router.push({path: '/', query: {alert: '用户删除成功!'}})
+      let params = {id:id} // 传参
+      getUserDelete(params)
+      console.log(params)
+      console.log(getUserDelete())
+      this.$router.push({path: '/', query: {alert: '用户删除成功!'}})
+  	  // this.$axios.delete('/users/' + id)
+        // .then((response) => {
+         //  this.$router.push({path: '/', query: {alert: '用户删除成功!'}})
     })
     }
   },
