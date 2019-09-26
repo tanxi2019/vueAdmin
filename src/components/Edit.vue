@@ -57,6 +57,12 @@ export default {
         this.customer = res.data
         this.customer.forEach(item => { this.customer = item }) // forEach遍历customer对象
       })
+
+      // this.$axios.get("/users/"+id)
+      //   .then((response) => {
+      //     console.log(response);
+      //     this.customer = response.data;
+      //   })
     },
   	updateCustomer (e) {
   		if (!this.customer.name || !this.customer.phone || !this.customer.email) {

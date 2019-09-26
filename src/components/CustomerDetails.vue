@@ -51,7 +51,7 @@ export default {
   name: 'cumstomerdetails',
   data () {
     return {
-      customer:{}
+      customer:[]
     }
   },
   methods: {
@@ -65,13 +65,14 @@ export default {
     deleteCustomer: function (id) {
       let params = {id:id} // 传参
       getUserDelete(params)
-      console.log(params)
-      console.log(getUserDelete())
-      this.$router.push({path: '/', query: {alert: '用户删除成功!'}})
-  	  // this.$axios.delete('/users/' + id)
-        // .then((response) => {
-         //  this.$router.push({path: '/', query: {alert: '用户删除成功!'}})
-    })
+      console.log(getUserDelete(params))
+      //this.$router.push({path: '/', query: {alert: '用户删除成功!'}})
+
+  	//   this.$axios.delete('/users/' + id)
+   //      .then((res) => {
+   //        console.log(res)
+   //        this.$router.push({path: '/', query: {alert: '用户删除成功!'}})
+   // })
     }
   },
   created () {

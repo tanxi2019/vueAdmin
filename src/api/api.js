@@ -11,4 +11,4 @@ export const getUserId = params => { return axios.get('/users/', { params: param
 
 export const getUserAdd = params => { return axios.post('/users', params).then(res => res.data) }
 
-export const getUserDelete = params => { return axios.delete('/users/', { params: params }) }
+export const getUserDelete = params => { return axios.delete('/users/', params ).then(res => res.data) }

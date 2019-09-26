@@ -49,6 +49,12 @@ export default {
       getUser().then((res) => {
         this.customers = res.data
       })
+
+      // this.$axios.get('/users')
+      //   .then((response) => {
+      //     //console.log(response);
+      //     this.customers = response.data
+      //   })
     },
     filterBy (customers, value) {
       return customers.filter((item) => {
